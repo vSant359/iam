@@ -9,9 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@300..700&display=swap"rel="stylesheet">
-   
-    
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@300..700&display=swap"
+        rel="stylesheet">
+
+
 
     <style>
         .font-chewy {
@@ -28,7 +29,8 @@
         <header class="flex justify-between items-center p-4 bg-white shadow h-32 relative">
             <!-- Logo -->
             <div class=" flex  items-center justify-center font-semibold text-lg bg-white">
-                <img src="{% static 'core\JORNAL DA IAM logo.png' %}" class=" object-contain  md:w-64 md:h-32" alt="logo">
+                <img src="{% static 'core\JORNAL DA IAM logo.png' %}" class=" object-contain  md:w-64 md:h-32"
+                    alt="logo">
             </div>
 
 
@@ -59,19 +61,14 @@
         </header>
         <p class="text-2xl   flex items-center justify-center font-chewy pt-16">destaques</p>
         <div class="overflow-x-auto flex snap-x snap-mandatory">
-            <div class="flex-shrink-0 w-full h-[300px] snap-start"><img
-                    src="https://www.arquidiocesedefortaleza.org.br/wp-content/uploads/2024/02/formato-do-site-iam.jpg"
-                    class="w-full h-full object-contain" alt=""></div>
-            <div class="flex-shrink-0 w-full h-[300px] snap-start"><img
-                    src="https://iam.pom.org.br/wp-content/uploads/sites/3/2020/10/iam-pom-grupos-participantes-768x455-1.png"
-                    class="w-full h-full object-contain" alt=""></div>
-            <div class="flex-shrink-0 w-full h-[300px] snap-start"><img
-                    src="https://www.paieterno.com.br/wp-content/uploads/2023/03/infancia_e_adolescencia_missionaria_180_anos.jpg"
-                    class="w-full h-full object-contain" alt=""></div>
-            <div class="flex-shrink-0 w-full h-[300px] snap-start"><img
-                    src="https://iam.pom.org.br/wp-content/uploads/sites/3/2023/11/Conheca-a-IAM-2-1.png"
-                    class="w-full h-full object-contain" alt=""></div>
-
+            {% for destaque in destaques %}
+            <div class="flex-shrink-0 w-full h-[300px] snap-start">
+                <a href="{{ destaque.link }}" target="_blank">
+                    <img src="{{ destaque.imagem }}" class="w-full h-full object-contain"
+                        alt="Destaque {{ forloop.counter }}">
+                </a>
+            </div>
+            {% endfor %}
         </div>
 
         <div class="w-32 h-12  flex items-center justify-center text-gray-600 font-semibold text-lg">
@@ -79,29 +76,14 @@
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 p-4 max-w-sm mx-auto">
+            {% for grupo in outros_grupos %}
             <div class="w-1/2 h-28 rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihU0F_gJ883fNLKQk_D85zQm1A1tN7uVQBCagsEOr8-NnZJkWtiuOXQcjvwcObWmq2YZdSVzoKdAgRu5pOs3BCW-NkkGuZ2znxnq7vKV8XmS92OiOig-TrGV6wIBXRPfGthd-SYsrhBIJR/s1600/mascotes_infancia_missionaria_globo.png"
-                    class="object-contain w-full h-full thumbnail" data-description="" alt="Descrição curta">
+                <img src="{{ grupo.imagem }}" class="object-contain w-full h-full thumbnail"
+                    data-description="{{ grupo.descricao }}" alt="Descrição curta">
             </div>
-            <div class="w-1/2 h-20 rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjs0-fmsbPlELSrwNoOxPSQtDc2u-7m78l4wvzaqxsio5ZwJBYNwzQYDTgdYgev7SzSG37bKQLP4z4QVC5J_-Qp8KkcZFdRHt0dXzqB_EmzdDuf1SG-UP_cnhDATU7I8qwKH-PTDAO6sFU/s640/mascotes_infancia_e_adolescencia_missionaria.png"
-                    class="object-contain w-full h-full thumbnail"
-                    data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quia atque voluptatibus voluptate fugiat cum officia, libero, nulla exercitationem ex eveniet, debitis doloremque? Necessitatibus facere aspernatur doloremque dolorum error enim!"
-                    alt="Descrição curta">
-            </div>
-            <div class="w-1/2 h-52 rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
-                <img src="https://iam.pom.org.br/wp-content/uploads/sites/3/2025/03/13-jornada-noticia_Easy-Resize.com_.jpg"
-                    class="object-contain w-full h-full thumbnail"
-                    data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quia atque voluptatibus voluptate fugiat cum officia, libero, nulla exercitationem ex eveniet, debitis doloremque? Necessitatibus facere aspernatur doloremque dolorum error enim!"
-                    alt="Descrição curta">
-            </div>
-            <div class="w-1/2 h-36 rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
-                <img src="https://paroquiasaogeraldo.com.br/wp-content/uploads/2019/11/Inf%C3%A2ncia-e-Adolesc%C3%AAncia-Mission%C3%A1ria-1.png"
-                    class="object-contain w-full h-full thumbnail font-sans text-base leading-relaxed"
-                    data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quia atque voluptatibus voluptate fugiat cum officia, libero, nulla exercitationem ex eveniet, debitis doloremque? Necessitatibus facere aspernatur doloremque dolorum error enim!"
-                    alt="Descrição curta">
-            </div>
+            {% endfor %}
         </div>
+
 
         <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
             <div class="max-w-md w-full p-4 bg-white rounded-lg text-center">
@@ -118,29 +100,31 @@
 
             <!-- Coluna 1: Imagens -->
             <div class="flex flex-col items-center gap-2">
-                <img src="https://app.pom.org.br/static/media/Logo_vertical_laranja.b8b0d44a.png" alt="Logo" class="w-20 h-auto"/>
-                <img src="https://uniao.pom.org.br/wp-content/uploads/sites/6/2020/10/Logo-IAM-2019-Vertical.png" alt="Imagem 2" class="w-16 h-auto"/>
+                <img src="https://app.pom.org.br/static/media/Logo_vertical_laranja.b8b0d44a.png" alt="Logo"
+                    class="w-20 h-auto" />
+                <img src="https://uniao.pom.org.br/wp-content/uploads/sites/6/2020/10/Logo-IAM-2019-Vertical.png"
+                    alt="Imagem 2" class="w-16 h-auto" />
             </div>
 
-                <!-- Coluna 2: Contato -->
-                <div class="flex flex-col items-center gap-2">
-                    <h3 class="font-semibold text-lg">Contato</h3>
-                    <p>Email: <a href="mailto:contato@exemplo.com" class="underline">contato@exemplo.com</a></p>
-                    <p>Telefone: (31) 99999-9999</p>
-                </div>
+            <!-- Coluna 2: Contato -->
+            <div class="flex flex-col items-center gap-2">
+                <h3 class="font-semibold text-lg">Contato</h3>
+                <p>Email: <a href="mailto:contato@exemplo.com" class="underline">contato@exemplo.com</a></p>
+                <p>Telefone: (31) 99999-9999</p>
+            </div>
 
-                <!-- Coluna 3: Copyright -->
-                <div class="flex flex-col items-center gap-2 justify-center">
-                    <span class="text-sm text-gray-400">© 2025 Infância e Adolescência Missionária</span>
-                    <span class="text-sm text-gray-400">Todos os direitos reservados</span>
-                </div> 
-            
+            <!-- Coluna 3: Copyright -->
+            <div class="flex flex-col items-center gap-2 justify-center">
+                <span class="text-sm text-gray-400">© 2025 Infância e Adolescência Missionária</span>
+                <span class="text-sm text-gray-400">Todos os direitos reservados</span>
+            </div>
+
         </div>
     </footer>
 
 
 </body>
- <script src="{% static 'home.js' %}"></script>
+<script src="{% static 'home.js' %}"></script>
 
 
 
