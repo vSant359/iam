@@ -1,1 +1,1 @@
-web: gunicorn jornal_iam.wsgi
+gunicorn jornal_iam.wsgi
