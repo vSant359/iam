@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'chave-fraca-dev')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jornal-da-iam.onrender.com']
+
 
 
 
@@ -64,6 +64,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -83,7 +84,6 @@ DATABASES = {
 }
 
 # Segurança
-DEBUG = os.getenv("DEBUG", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", "chave-secreta-para-dev")
 ALLOWED_HOSTS = ['*']  # Pode ajustar se quiser restringir
 
