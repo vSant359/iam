@@ -1,3 +1,6 @@
+import os
+import dj_database_url 
+
 """
 Django settings for jornal_iam project.
 
@@ -13,7 +16,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -76,11 +79,22 @@ WSGI_APPLICATION = 'jornal_iam.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
+
+# Segurança
+DEBUG = os.getenv("DEBUG", "False") == "True"
+SECRET_KEY = os.getenv("SECRET_KEY", "chave-secreta-para-dev")
+ALLOWED_HOSTS = ['*']  # Pode ajustar se quiser restringir
+
+# Arquivos estáticos
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Arquivos de mídia (se estiver usando ImageField, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'jornal_iam/static')]
 
 
 # Password validation
@@ -117,13 +131,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
