@@ -63,7 +63,7 @@
         <div class="overflow-x-auto flex snap-x snap-mandatory">
             {% for destaque in destaques %}
             <div class="flex-shrink-0 w-full h-[300px] snap-start">
-                <a href="{{ destaque.link }}" target="_blank">
+                <a href="{{ destaque.link }}">
                     <img src="{{ destaque.imagem }}" class="w-full h-full object-contain"
                         alt="Destaque {{ forloop.counter }}">
                 </a>
