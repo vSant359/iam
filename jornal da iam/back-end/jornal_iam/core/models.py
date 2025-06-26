@@ -2,7 +2,7 @@ from django.db import models
 
 class Destaques(models.Model):
     imagem = models.URLField()
-    link = models.URLField() #link de redirecionamento da imagem, que será um destaque de alguma edição do jornal
+   #FUturamente adicionar aqui o link de redirecionamento da imagem, que será um destaque de alguma edição do jornal
     ordem = models.IntegerField(default=0)
 
     def __str__(self):
