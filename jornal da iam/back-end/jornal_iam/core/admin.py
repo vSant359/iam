@@ -9,7 +9,7 @@ class EdicaoAdmin(admin.ModelAdmin):
 
 @admin.register(Destaques)
 class Destaques(admin.ModelAdmin):
-    list_display =['id', 'imagem', , 'ordem']
+    list_display =['id', 'imagem',  'ordem']
     ordering = ['ordem']
 
 @admin.register(Outros_grupos)
